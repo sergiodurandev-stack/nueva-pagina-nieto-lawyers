@@ -1,0 +1,37 @@
+Log created: 2026-04-22 17:10:15
+Type: backup
+[2026-04-22 17:10:15][notice]Start backing up.
+[2026-04-22 17:10:15][notice]server info fcgi:On max execution time: 180 wp version:6.9.4 php version:8.2.27 db version:8.0.35 php ini:safe_mode: memory_limit:512M memory_get_usage:47.01 MB memory_get_peak_usage:47.82 MB extensions:PDO enabled curl enabled zlib enabled   is_multisite:0
+[2026-04-22 17:10:15][notice]Prepare to backup backup_db files.
+[2026-04-22 17:10:15][notice]Start exporting database.
+[2026-04-22 17:10:15][notice]Preparing to dump table wp_links
+[2026-04-22 17:10:15][notice]Preparing to dump table wp_term_relationships
+[2026-04-22 17:10:15][notice]Preparing to dump table wp_commentmeta
+[2026-04-22 17:10:16][notice]Preparing to dump table wp_postmeta
+[2026-04-22 17:10:16][notice]Preparing to dump table wp_term_taxonomy
+[2026-04-22 17:10:16][notice]Preparing to dump table wp_termmeta
+[2026-04-22 17:10:16][notice]Preparing to dump table wp_terms
+[2026-04-22 17:10:16][notice]Preparing to dump table wp_usermeta
+[2026-04-22 17:10:16][notice]Preparing to dump table wp_users
+[2026-04-22 17:10:16][notice]Preparing to dump table wp_comments
+[2026-04-22 17:10:16][notice]Preparing to dump table wp_posts
+[2026-04-22 17:10:16][notice]Preparing to dump table wp_options
+[2026-04-22 17:10:16][notice]Exporting database finished.
+[2026-04-22 17:10:16][notice]Start compressing database
+[2026-04-22 17:10:16][notice]Prepare to zip file. file: nieto-lawyers-1.local_wpvivid-a01d22fb11fe5_2026-04-22-17-10_backup_db.sql
+[2026-04-22 17:10:16][notice]Adding zip files completed.nieto-lawyers-1.local_wpvivid-a01d22fb11fe5_2026-04-22-17-10_backup_db.part001.zip, filesize: 198.66 KB
+[2026-04-22 17:10:16][notice]Compressing database completed
+[2026-04-22 17:10:16][notice]Backing up backup_db completed.
+[2026-04-22 17:10:16][notice]Prepare to backup backup_themes files.
+[2026-04-22 17:10:16][notice]Compressing zip file:nieto-lawyers-1.local_wpvivid-a01d22fb11fe5_2026-04-22-17-10_backup_themes.part001.zip index:409
+[2026-04-22 17:10:26][notice]Compressing zip file:nieto-lawyers-1.local_wpvivid-a01d22fb11fe5_2026-04-22-17-10_backup_themes.part001.zip success. index:409 file size:12.64 MB
+[2026-04-22 17:10:26][notice]Backing up backup_themes completed.
+[2026-04-22 17:10:26][notice]Prepare to backup backup_plugin files.
+[2026-04-22 17:10:27][notice]Compressing zip file:nieto-lawyers-1.local_wpvivid-a01d22fb11fe5_2026-04-22-17-10_backup_plugin.part001.zip index:1251
+[2026-04-22 17:10:54][notice]Compressing zip file:nieto-lawyers-1.local_wpvivid-a01d22fb11fe5_2026-04-22-17-10_backup_plugin.part001.zip success. index:1251 file size:12.88 MB
+[2026-04-22 17:10:54][notice]Backing up backup_plugin completed.
+[2026-04-22 17:10:54][notice]Prepare to backup backup_uploads files.
+[2026-04-22 17:10:54][notice]Compressing zip file:nieto-lawyers-1.local_wpvivid-a01d22fb11fe5_2026-04-22-17-10_backup_uploads.part001.zip index:48
+[2026-04-22 17:10:55][notice]Compressing zip file:nieto-lawyers-1.local_wpvivid-a01d22fb11fe5_2026-04-22-17-10_backup_uploads.part001.zip success. index:48 file size:350.00 B
+[2026-04-22 17:10:55][error]Backup the file ends with an error Failed to add zip files. status string:Renaming temporary file failed: Permission denied
+[2026-04-22 17:10:55][error]Failed to add zip files. status string:Renaming temporary file failed: Permission denied
