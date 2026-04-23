@@ -22,6 +22,21 @@ $lawyers = [
     ],
     'bio'     => 'Jaime Nieto Pérez es socio fundador de Nieto & Nieto Lawyers y una de las figuras que mejor representa la solidez de la firma. Con más de 40 años de trayectoria profesional, ha desarrollado una práctica de alto nivel en derecho corporativo, inmobiliario y contratación, acompañando a empresas, inversionistas y clientes estratégicos en decisiones de gran impacto.',
     'trayect' => '<p>A lo largo de su carrera, Jaime ha asesorado compañías nacionales e internacionales de sectores como el industrial, manufacturero, inmobiliario, salud y telecomunicaciones, participando en asuntos corporativos, contractuales e inmobiliarios de alto impacto.</p><p>Su experiencia comprende tanto la estructuración y acompañamiento de negocios como la gestión de controversias y la protección de intereses patrimoniales. Es reconocido por su capacidad de análisis, su comprensión del entorno regulatorio colombiano y su habilidad para articular soluciones jurídicas complejas con claridad y efectividad.</p>',
+    'quote'   => 'Su trayectoria es el cimiento sobre el que se construyó una firma boutique con presencia internacional, guiada por la ética, la excelencia y el compromiso con el cliente.',
+    'highlights' => [
+      [
+        'title' => 'Fundador y visionario',
+        'text'  => 'Construyó una firma boutique desde cero, guiado por la convicción de que la justicia y el rigor técnico deben ir de la mano con un trato cercano y humano.',
+      ],
+      [
+        'title' => 'Trayectoria de alto impacto',
+        'text'  => 'Con más de cuatro décadas acompañando empresas e inversionistas en decisiones estructurales, su nombre es sinónimo de confianza y solidez en el mercado jurídico colombiano.',
+      ],
+      [
+        'title' => 'Legado y liderazgo',
+        'text'  => 'Ha formado un equipo multidisciplinario que hoy lleva su sello de calidad: abogados, contadores e internacionalistas comprometidos con la excelencia y la visión global.',
+      ],
+    ],
   ],
   'jaime-andres-nieto' => [
     'name'    => 'Jaime Andrés Nieto',
@@ -39,19 +54,19 @@ $lawyers = [
     ],
     'bio'     => 'Jaime Andrés Nieto es abogado con una sólida formación en derecho contractual y derecho privado, egresado de la Universidad del Rosario, donde fue becario de la Facultad de Jurisprudencia. Con una especialización en Derecho Contractual y una maestría en Derecho Privado, ha logrado posicionarse como un referente en la asesoría de negociaciones contractuales de alto nivel.',
     'trayect' => '<p>A lo largo de su carrera ha brindado asesoría integral en la negociación e implementación de vehículos contractuales para negocios nacionales e internacionales, incluyendo Letters of Intent, MOUs, acuerdos de distribución y joint ventures.</p><p>Cuenta con amplia experiencia en derecho de la propiedad intelectual, especialmente en registro y protección de marcas a nivel nacional e internacional, derechos de autor y contratos de licencia y transferencia de tecnología.</p>',
-    'quote'   => 'Combina visiÃ³n internacional, rigor contractual y comprensiÃ³n del negocio para estructurar relaciones de largo plazo con seguridad jurÃ­dica.',
+    'quote'   => 'Combina visión internacional, rigor contractual y comprensión del negocio para estructurar relaciones de largo plazo con seguridad jurídica.',
     'highlights' => [
       [
-        'title' => 'NegociaciÃ³n de alto valor',
-        'text'  => 'AcompaÃ±a operaciones complejas donde la estrategia contractual debe equilibrar crecimiento, protecciÃ³n patrimonial y claridad entre las partes.',
+        'title' => 'Negociación de alto valor',
+        'text'  => 'Acompaña operaciones complejas donde la estrategia contractual debe equilibrar crecimiento, protección patrimonial y claridad entre las partes.',
       ],
       [
         'title' => 'Puente entre Colombia y mercados globales',
-        'text'  => 'Su experiencia en negocios internacionales le permite estructurar relaciones transfronterizas con una mirada prÃ¡ctica sobre riesgos, jurisdicciones y ejecuciÃ³n.',
+        'text'  => 'Su experiencia en negocios internacionales le permite estructurar relaciones transfronterizas con una mirada práctica sobre riesgos, jurisdicciones y ejecución.',
       ],
       [
-        'title' => 'Activos intangibles y tecnologÃ­a',
-        'text'  => 'Integra propiedad intelectual, licenciamiento y transferencia de tecnologÃ­a dentro de estrategias comerciales sostenibles y bien documentadas.',
+        'title' => 'Activos intangibles y tecnología',
+        'text'  => 'Integra propiedad intelectual, licenciamiento y transferencia de tecnología dentro de estrategias comerciales sostenibles y bien documentadas.',
       ],
     ],
   ],
@@ -71,19 +86,19 @@ $lawyers = [
     ],
     'bio'     => 'Estefani Nieto es socia de Nieto Lawyers con una práctica enfocada en asuntos internacionales, sectores altamente regulados y transformación empresarial. Su perfil integra visión jurídica, criterio estratégico y comprensión del negocio, acompañando a empresas e inversionistas en decisiones complejas relacionadas con Colombia, Latinoamérica y mercados internacionales.',
     'trayect' => '<p>Ha centrado su trayectoria en la asesoría a inversionistas extranjeros y compañías internacionales, acompañando procesos de entrada a mercado, expansión comercial y estructuración jurídica de operaciones.</p><p>En el ámbito regulatorio y sanitario, cuenta con experiencia en el sector salud, alimentos, cosméticos y dispositivos médicos, asesorando en registro de productos y cumplimiento normativo ante el INVIMA.</p>',
-    'quote'   => 'Integra perspectiva internacional, criterio regulatorio y comprension del negocio para acompanar decisiones sensibles de expansion, cumplimiento y transformacion.',
+    'quote'   => 'Integra perspectiva internacional, criterio regulatorio y comprensión del negocio para acompañar decisiones sensibles de expansión, cumplimiento y transformación.',
     'highlights' => [
       [
-        'title' => 'Expansion internacional con criterio local',
-        'text'  => 'Acompana a inversionistas y companias en su entrada a mercado, estructuracion operativa y toma de decisiones en contextos multiculturales y multijurisdiccionales.',
+        'title' => 'Expansión internacional con criterio local',
+        'text'  => 'Acompaña a inversionistas y compañías en su entrada a mercado, estructuración operativa y toma de decisiones en contextos multiculturales y multijurisdiccionales.',
       ],
       [
         'title' => 'Sectores altamente regulados',
-        'text'  => 'Su experiencia en salud, alimentos, cosmeticos y dispositivos medicos le permite traducir exigencias regulatorias en rutas de accion concretas y viables.',
+        'text'  => 'Su experiencia en salud, alimentos, cosméticos y dispositivos médicos le permite traducir exigencias regulatorias en rutas de acción concretas y viables.',
       ],
       [
-        'title' => 'Transformacion y cumplimiento',
-        'text'  => 'Articula estrategia empresarial, tecnologia y cumplimiento para que las organizaciones crezcan con mayor orden, trazabilidad y seguridad juridica.',
+        'title' => 'Transformación y cumplimiento',
+        'text'  => 'Articula estrategia empresarial, tecnología y cumplimiento para que las organizaciones crezcan con mayor orden, trazabilidad y seguridad jurídica.',
       ],
     ],
   ],
@@ -106,15 +121,15 @@ $lawyers = [
     'highlights' => [
       [
         'title' => 'Control contable integral',
-        'text'  => 'Acompana a empresas en el manejo del ciclo contable completo, con foco en consistencia de informacion, cumplimiento y trazabilidad.',
+        'text'  => 'Acompaña a empresas en el manejo del ciclo contable completo, con foco en consistencia de información, cumplimiento y trazabilidad.',
       ],
       [
-        'title' => 'Vision tributaria practica',
-        'text'  => 'Convierte obligaciones fiscales y reportes periodicos en procesos claros, sostenibles y alineados con la realidad operativa de cada cliente.',
+        'title' => 'Visión tributaria práctica',
+        'text'  => 'Convierte obligaciones fiscales y reportes periódicos en procesos claros, sostenibles y alineados con la realidad operativa de cada cliente.',
       ],
       [
-        'title' => 'Operacion y soporte financiero',
-        'text'  => 'Integra contabilidad, tesoreria, nomina y herramientas de gestion para fortalecer la base administrativa y financiera de la organizacion.',
+        'title' => 'Operación y soporte financiero',
+        'text'  => 'Integra contabilidad, tesorería, nómina y herramientas de gestión para fortalecer la base administrativa y financiera de la organización.',
       ],
     ],
   ],
@@ -133,6 +148,21 @@ $lawyers = [
     ],
     'bio'     => 'Katty es abogada especializada en derecho internacional, relaciones comerciales y derecho migratorio. Su enfoque principal es asistir a empresas e individuos que buscan expandir sus operaciones o establecer vínculos entre Australia y Latinoamérica, brindando asesoría en inversión extranjera, expansión de negocios y resolución de disputas.',
     'trayect' => '<p>Con sólida experiencia en derecho internacional y comercial, asesora a empresas australianas en su expansión hacia Latinoamérica, brindando apoyo en negociación de contratos, cumplimiento normativo y resolución de disputas en sectores como tecnología, energía y manufactura.</p><p>También ofrece servicios de asesoría migratoria para individuos y familias en procesos de visas, residencias y ciudadanías.</p>',
+    'quote'   => 'Conecta continentes a través del derecho: su visión internacional y conocimiento multicultural permiten tender puentes jurídicos sólidos entre Australia y Latinoamérica.',
+    'highlights' => [
+      [
+        'title' => 'Derecho internacional aplicado',
+        'text'  => 'Asesora a empresas australianas en su expansión hacia Latinoamérica, combinando conocimiento regulatorio local con una visión global del negocio.',
+      ],
+      [
+        'title' => 'Cumplimiento y gobierno corporativo',
+        'text'  => 'Diseña programas de compliance y estructuras corporativas que garantizan operaciones transparentes y alineadas con los estándares internacionales.',
+      ],
+      [
+        'title' => 'Visión migratoria estratégica',
+        'text'  => 'Acompaña a individuos y familias en procesos migratorios complejos, brindando seguridad jurídica en cada etapa del camino.',
+      ],
+    ],
   ],
   'mert-ocal' => [
     'name'    => 'Mert Ocal',
@@ -148,6 +178,21 @@ $lawyers = [
     ],
     'bio'     => 'Mert es profesional en Ingeniería graduado de la Universidad de Koç con una Maestría en Finanzas de la Universidad de Bahçeşehir en Estambul. Con más de una década de experiencia en los sectores agrícola, industrial y manufacturero, ha liderado proyectos estratégicos que permiten a sus clientes maximizar rentabilidad y eficiencia operativa.',
     'trayect' => '<p>Aporta una perspectiva única gracias a su experiencia combinada en ingeniería, finanzas y derecho de negocios internacionales. Su conocimiento del mercado turco y latinoamericano lo convierte en un puente estratégico para empresas que buscan operar entre estas regiones.</p><p>Ha liderado proyectos de estructuración financiera, análisis de viabilidad y due diligence en sectores agroindustriales, manufactura y tecnología.</p>',
+    'quote'   => 'Su perfil multidisciplinario —ingeniería, finanzas y negocios internacionales— le permite abordar los desafíos de sus clientes con una visión integral y una perspectiva única del corredor Turquía-Latinoamérica.',
+    'highlights' => [
+      [
+        'title' => 'Puente Turquía-Latinoamérica',
+        'text'  => 'Conocedor de ambos mercados, estructura operaciones de inversión y comercio que conectan eficientemente a empresas turcas y latinoamericanas.',
+      ],
+      [
+        'title' => 'Visión financiera desde la ingeniería',
+        'text'  => 'Su formación multidisciplinaria le permite analizar proyectos de inversión con profundidad técnica, identificando riesgos y oportunidades que otros pasan por alto.',
+      ],
+      [
+        'title' => 'Estructuración de proyectos estratégicos',
+        'text'  => 'Ha liderado due diligence y estructuración financiera en sectores agroindustriales, manufactura y tecnología, maximizando la rentabilidad de sus clientes.',
+      ],
+    ],
   ],
   'anibal-ricardo-coley' => [
     'name'    => 'Aníbal Ricardo Coley',
@@ -163,6 +208,21 @@ $lawyers = [
     ],
     'bio'     => 'Aníbal es contador público graduado de la Universidad del Atlántico, con especialización en Gerencia Financiera de la Universidad Libre de Colombia. Ha desarrollado competencias clave en gestión contable y financiera, planeación fiscal estratégica y preparación de estados financieros e informes de gestión.',
     'trayect' => '<p>Combina un conocimiento técnico profundo con una perspectiva práctica, abordando retos contables y fiscales con soluciones efectivas y personalizadas para cada cliente.</p><p>Aporta al equipo su dominio en la implementación de normativas contables nacionales e internacionales, así como en la presentación de obligaciones tributarias ante la DIAN y otras entidades de control.</p>',
+    'quote'   => 'Aporta rigor técnico y visión estratégica a cada proceso contable y fiscal, garantizando que las empresas cumplan con sus obligaciones mientras optimizan su gestión financiera.',
+    'highlights' => [
+      [
+        'title' => 'Gestión contable de precisión',
+        'text'  => 'Domina la implementación de normativas NIIF y sistemas contables especializados, asegurando información financiera confiable y oportuna.',
+      ],
+      [
+        'title' => 'Planeación fiscal estratégica',
+        'text'  => 'Diseña estrategias tributarias que minimizan riesgos y maximizan eficiencias, manteniendo a sus clientes en cumplimiento con la DIAN y demás entidades.',
+      ],
+      [
+        'title' => 'Enfoque práctico y cercano',
+        'text'  => 'Traduce la complejidad técnica de la normativa contable y fiscal en soluciones claras y aplicables, adaptadas a la realidad de cada negocio.',
+      ],
+    ],
   ],
 ];
 
