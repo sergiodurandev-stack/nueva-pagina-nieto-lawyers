@@ -2,7 +2,7 @@
 
 ## Fase 3: Finalización
 
-### Última actualización: 2025 (sesión actual)
+### Última actualización: 2025-04-23 (deploy completado)
 
 ---
 
@@ -53,58 +53,56 @@
 
 ---
 
-## 🔄 EN PROGRESO / PENDIENTE
+## ✅ COMPLETADO
 
-### Alto Impacto
-1. **Páginas faltantes en BD**: ✅ RESUELTO — Creadas vía SQL:
-   - Trabaja con Nosotros (ID 117, template: `template-trabaja-con-nosotros.php`)
-   - Política de Privacidad (ID 118, template: `template-politica-de-privacidad.php`)
-   - Términos y Condiciones (ID 119, template: `template-terminos-y-condiciones.php`)
-   
-2. **Bug "min lectura"** en `single.php`: ✅ RESUELTO — Reemplazado `get_post_time('H:i')` por cálculo real de tiempo de lectura basado en word count / 200
+### Deploy a servidor remoto (ejecutado 2025-04-23)
+- ✅ Git push a GitHub (sin BD)
+- ✅ Dump SQL importado via phpMyAdmin
+- ✅ URLs corregidas (`lawyers11` → `lawyers1`)
+- ✅ Datos copiados de tablas `wp_` a `wpeu_` (prefijo real del remoto)
+- ✅ Theme ZIP subido y extraído via File Manager de cPanel
+- ✅ Páginas: Trabaja, Privacidad, Términos funcionando (200)
+- ✅ Blog y archives funcionando (200)
+- ✅ Admin accesible
 
-3. **Archive template**: ✅ VERIFICADO — Las URLs responden 200:
-   - `/noticias-legales/` ✅ (200)
-   - `/opinion-analisis/` ✅ (200)
-   - `/practicos-exp/` ✅ (200)
-   - `/category/*/` ✅ (200 con categorías existentes; `actualidad` no es categoría, es CPT)
+---
 
-4. **Overflow negro en móvil**: ⚪ Pendiente de verificar
+## 🔄 PENDIENTE POST-DEPLOY
 
-### Medio Impacto
-5. **Featured images**: 🟡 Pendiente — 169 _thumbnail_id en original, 0 en nuevo. Los archivos físicos existen en `/uploads/` pero faltan los registros `wp_posts` tipo attachment. Requiere script para registrar attachments y mapear _thumbnail_id.
-   
-6. **Optimización de assets**: 
-   - Imágenes en `/uploads/nieto-assets/` ya están presentes
-   - Verificar que todas las rutas sean correctas
+### 🟡 Media Prioridad
+1. **Featured images**: 169 _thumbnail_id en original, 0 en nuevo. Archivos existen en /uploads/ pero faltan registros attachment. Crear script PHP para registrar attachments y mapear _thumbnail_id.
+2. **Overflow móvil**: Verificar si persiste overflow horizontal (<400px). Revisar `.areas-grid` y hero.
+3. **Menú de navegación**: Configurar menú de WP correctamente.
 
-7. **Menú de navegación**: Verificar que el menú de WP esté configurado correctamente
-
-### Bajo Impacto
-8. **SEO**: Meta descriptions para templates
-9. **Rendimiento**: Lazy loading ya implementado en templates
+### 🟢 Baja Prioridad
+4. **SEO**: Meta descriptions para templates
+5. **Rendimiento**: Verificar velocidad de carga
+6. **Sidebar**: Verificar widgets del sidebar funcionando
 
 ---
 
 ## 📊 ESTADÍSTICAS
 
-| Ítem | Sitio Original | Sitio Nuevo |
-|------|---------------|-------------|
-| Posts publicados | 230 | 29 → ~112 (post-migración) |
-| Pages | 23 | 7 → ~10 (con páginas faltantes) |
-| Categorías | 14 (categoria) | 14 (category) |
-| Abogados (hardcodeados) | 7 | 7 |
-| Áreas de práctica | 15 | 14 |
-| Plugins activos | 31 | mínimos |
-| WooCommerce | Sí | No |
+| Ítem | Sitio Original | Sitio Nuevo Local | Sitio Remoto |
+|------|---------------|-------------------|-------------|
+| Posts publicados | 230 | ~112 (84 migrados) | ~112 |
+| Pages | 23 | ~11 | ~11 |
+| Categorías | 14 (categoria) | 14 (category) | 14 |
+| Abogados (hardcodeados) | 7 | 7 | 7 |
+| Áreas de práctica | 15 | 14 | 14 |
+| Plugins activos | 31 | mínimos | LiteSpeed Cache |
 
 ---
 
 ## 📝 NOTAS TÉCNICAS
 
 - **Base de datos original**: MySQL puerto 10053, DB 'local', prefijo wp_
-- **Base de datos nueva**: MySQL puerto 10059, DB 'local', prefijo wp_
+- **Base de datos nueva (local)**: MySQL puerto 10059, DB 'local', prefijo wp_
+- **Base de datos remota**: Host `localhost:3306`, DB `sergpwry_wp528`, prefijo `wpeu_` ⚠️
+- **URL remota real**: `https://arasaka.sergioduran.dev/nuevo-nieto-lawyers1/` (con 1 al final)
+- **Admin remoto**: `https://arasaka.sergioduran.dev/nuevo-nieto-lawyers1/wp-admin/`
 - **PHP disponible**: `C:\Users\flocl\AppData\Local\Programs\Local\resources\extraResources\lightning-services\php-8.2.27+1\bin\win64\php.exe`
 - **MySQL cliente**: `C:\Program Files\MySQL\MySQL Server 9.5\bin\mysql.exe`
-- **No hay WP-CLI disponible**
+- **No hay WP-CLI disponible en local**
 - **No hay PDO driver en el PHP de CLI** (usar MySQL directo o web PHP)
+- **Deploy**: Git push + phpMyAdmin (dump) + File Manager (theme ZIP)

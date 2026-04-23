@@ -1,6 +1,6 @@
 # 🧠 Estado del Proyecto — Nieto & Nieto Lawyers (Fase 3 en progreso)
 
-**Última actualización:** 2025 (sesión actual)
+**Última actualización:** 2025-04-23 (sesión deploy + fix BD remota)
 
 ---
 
@@ -15,10 +15,14 @@
 
 > **Nota:** Ambos usan DB `local`, user `root`, password `root`
 
-### Despliegue (deploy.sh)
-- Local: `nieto-lawyers-1.local`
-- Staging: `arasaka.sergioduran.dev/nuevo-nieto-lawyers`
-- Producción: `https://nieto-lawyers.com` (según style.css)
+### 🌐 Sitio remoto (Namecheap cPanel)
+- **URL real:** `https://arasaka.sergioduran.dev/nuevo-nieto-lawyers1/` **(con 1 al final)**
+- **Prefijo BD remoto:** `wpeu_` (NO `wp_`)
+- **Admin:** `https://arasaka.sergioduran.dev/nuevo-nieto-lawyers1/wp-admin/`
+- **Usuario:** `nieto123`
+- **Hosting:** Namecheap cPanel con phpMyAdmin y File Manager
+
+> ⚠️ **IMPORTANTE:** El `deploy.sh` original tiene la URL mal (`nuevo-nieto-lawyers` sin el 1). La URL correcta es con `lawyers1`.
 
 ---
 
@@ -51,7 +55,7 @@ Header/Nav, Hero, About, Practice Areas, Team, Reviews, Latest Posts, Contact, F
 
 ---
 
-## 🔄 FASE 2 COMPLETA — Subpáginas institucionales ✅
+## ✅ FASE 2 COMPLETA — Subpáginas institucionales ✅
 
 | Tarea | Estado |
 |-------|--------|
@@ -62,38 +66,69 @@ Header/Nav, Hero, About, Practice Areas, Team, Reviews, Latest Posts, Contact, F
 
 ---
 
-## 🚧 FASE 3 — Migración de contenido (EN PROGRESO)
+## ✅ FASE 3 — Migración de contenido (COMPLETADA el 2025-04-23)
 
-### Sitio original (`nieto-lawyers.local:10053`) — Contenido encontrado:
+### Contenido migrado (83 posts + 14 categorías)
+| CPT Nuevo | Cantidad | Origen |
+|-----------|----------|--------|
+| `noticias-legales` | 63 | `actualidad` (58) + `noticiaslegales` (5) |
+| `opinion-analisis` | 11 | `opinion-analisis` |
+| `practicos-exp` | 6 | `practicos-exp` (3) + `guias-kits-legales` (3) |
+| `post` | 4 | `post` (3) + Hello world |
+| **Total** | **84** | |
 
-| CPT en original | Cantidad | ¿Mapeable al nuevo theme? |
-|-----------------|----------|--------------------------|
-| `actualidad` | **58 posts** | ❌ No existe en nuevo theme. Propuesta: migrar a `noticias-legales` |
-| `opinion-analisis` | **11 posts** | ✅ Coincide exactamente |
-| `areas-de-practica` | 15 | ✅ Coincide |
-| `abogados` | 7 | ✅ Coincide |
-| `noticiaslegales` (sin guión) | 5 | ❌ Renombrar a `noticias-legales` |
-| `guias-kits-legales` | 3 | ❌ No existe en nuevo theme |
-| `post` | 3 | ✅ Nativo de WP |
-| `practicos-exp` | 3 | ✅ Coincide exactamente |
-| `noticias-legales` | 2 | ✅ Son de prueba ("test", "test 2") |
+### Decisiones de Mapeo (Tomadas)
+| Origen | Destino | Decisión |
+|--------|---------|----------|
+| `actualidad` (58) | `noticias-legales` | ✅ Migrado |
+| `noticiaslegales` (5) | `noticias-legales` | ✅ Migrado (sin guión) |
+| `guias-kits-legales` (3) | `practicos-exp` | ✅ Migrado (son guías prácticas) |
+| `test-rapidos*` (3) | Descartados | ✅ Basura eliminada |
+| `areas-de-practica` | NO migrado | ✅ Hardcodeado en template |
+| `abogados` | NO migrado | ✅ Hardcodeado en template |
 
-### Pendiente de decisión:
-- [ ] ¿Migrar `actualidad` (58) a `noticias-legales`?
-- [ ] ¿Migrar `noticiaslegales` (5) a `noticias-legales`?
-- [ ] ¿Qué hacer con `guias-kits-legales` (3)?
-- [ ] Copiar imágenes de `/uploads/` del original al nuevo
-- [ ] Reemplazar URLs viejas (`nieto-lawyers.local`) por nuevas
+### Assets
+- ✅ `/uploads/` 2023-2025 copiados desde sitio original
+- ✅ URLs reemplazadas: `nieto-lawyers.local` → `nieto-lawyers-1.local`
+- ✅ 49 archivos en `/uploads/nieto-assets/`
 
 ---
 
-## ✅ Lo que está OK
-- Perfiles de 7 abogados completos con quote + highlights
-- `wp-config.php` excluido de FTP y git
-- Scroll-padding-top para header fijo
-- Redes sociales con URLs reales
-- 8 páginas institucionales funcionando
-- Resultados de búsqueda operativos
-- Página 404 personalizada
-- Archives de CPTs funcionales
-- Formulario de trabajo recibiendo correos
+## 📋 PENDIENTES POST-DEPLOY
+
+### 🟡 Media Prioridad
+1. **Featured images**: 169 _thumbnail_id en original, 0 en nuevo. Archivos físicos existen, faltan registros attachment. Requiere script para registrar attachments y mapear _thumbnail_id.
+2. **Overflow móvil**: Verificar si persiste overflow horizontal en móvil (`.areas-grid`, hero).
+3. **Permalinks**: Puede necesitar refrescarse en el admin remoto si alguna URL da 404.
+
+### 🟢 Baja Prioridad
+4. SEO básico (meta descriptions, alt texts)
+5. Verificar rendimiento / velocidad de carga
+6. Menú de navegación configurado correctamente
+
+---
+
+## 📊 ESTADÍSTICAS
+
+| Ítem | Sitio Original | Sitio Nuevo Local | Sitio Remoto |
+|------|---------------|-------------------|-------------|
+| Posts publicados | 230 | ~112 | ~112 |
+| Pages | 23 | ~11 | ~11 |
+| Categorías | 14 | 14 | 14 |
+| Abogados (hardcodeados) | 7 | 7 | 7 |
+| Áreas de práctica | 15 | 14 | 14 |
+| Plugins activos | 31 | mínimos | LiteSpeed Cache |
+
+---
+
+## 📝 NOTAS TÉCNICAS
+
+- **Base de datos original**: MySQL puerto 10053, DB 'local', prefijo wp_
+- **Base de datos nueva local**: MySQL puerto 10059, DB 'local', prefijo wp_
+- **Base de datos remota**: Host `localhost:3306`, DB `sergpwry_wp528`, prefijo `wpeu_` (¡importante!)
+- **PHP disponible**: `C:\Users\flocl\AppData\Local\Programs\Local\resources\extraResources\lightning-services\php-8.2.27+1\bin\win64\php.exe`
+- **MySQL cliente**: `C:\Program Files\MySQL\MySQL Server 9.5\bin\mysql.exe`
+- **No hay WP-CLI disponible en local**
+- **No hay PDO driver en el PHP de CLI** (usar MySQL directo o web PHP)
+- **Deploy**: Git push a GitHub + importar dump via phpMyAdmin + subir theme ZIP via File Manager
+- **URL correcta remota**: `arasaka.sergioduran.dev/nuevo-nieto-lawyers1/` (con 1 al final)
