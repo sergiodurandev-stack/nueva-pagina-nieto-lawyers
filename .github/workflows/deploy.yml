@@ -27,3 +27,4 @@ jobs:
           deploy.sh
           .gitignore
           wp-content/plugins/wpvivid-backuprestore/**
+          wp-config.php
