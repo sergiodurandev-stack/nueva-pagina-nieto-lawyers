@@ -1,6 +1,6 @@
 # 🧠 Estado del Proyecto — Nieto & Nieto Lawyers (Fase 3 en progreso)
 
-**Última actualización:** 2025-04-? (sesión featured images + menú WP + overflow fixes)
+**Última actualización:** 2025-04-? (deploy automatizado con GitHub Actions funcionando)
 
 ---
 
@@ -130,5 +130,8 @@ Header/Nav, Hero, About, Practice Areas, Team, Reviews, Latest Posts, Contact, F
 - **MySQL cliente**: `C:\Program Files\MySQL\MySQL Server 9.5\bin\mysql.exe`
 - **No hay WP-CLI disponible en local**
 - **No hay PDO driver en el PHP de CLI** (usar MySQL directo o web PHP)
-- **Deploy**: Git push a GitHub + importar dump via phpMyAdmin + subir theme ZIP via File Manager
+- **Deploy**: **🚀 Automatizado vía GitHub Actions** — Push a `main` → FTP sincroniza solo `wp-content/themes/nieto-lawyers-theme/`
+- **Workflow**: `.github/workflows/deploy.yml` (usa `SamKirkland/FTP-Deploy-Action@v4.3.4`)
+- **Secrets GitHub necesarios**: `FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD` (✅ ya configurados)
 - **URL correcta remota**: `arasaka.sergioduran.dev/nuevo-nieto-lawyers1/` (con 1 al final)
+- ⚠️ El `deploy.sh` local está obsoleto (usa SSH que no funciona). No usar.

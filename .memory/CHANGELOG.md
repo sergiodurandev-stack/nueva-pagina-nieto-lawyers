@@ -63,12 +63,20 @@
 | ✅ Archive URLs | Verificadas todas las URLs de CPTs y categorías (200 OK) |
 | 📁 Memoria actualizada | STATE.md, CHANGELOG.md, TASKS.md actualizados en .memory/ y theme/memory/ |
 
-## Sesión 2025-04-? — Featured images script + Menú WP + Overflow fixes
+## Sesión 2025-04-? — Featured images + Menú WP + Deploy automático GitHub Actions
 
-| Tarea | Detalle |
-|-------|---------|
-| 🆕 Script featured images | Creado `register-featured-images.php` para registrar attachments desde BD original y mapear _thumbnail_id |
-| 🔧 Menú navegación | Header convertido para usar `wp_nav_menu()` con fallback a hardcoded links |
-| 🔧 CSS menú | Añadidos estilos para `.primary-menu` (list items, current-menu-item, etc.) |
-| 🔧 CSS responsive | Actualizado menú móvil para usar nueva estructura `.primary-menu` |
-| 📁 Memoria actualizada | STATE.md, CHANGELOG.md actualizados |
+| Commit | Tarea |
+|--------|-------|
+| `31f6610` | 🆕 Script `register-featured-images.php` para attachments + _thumbnail_id |
+| `31f6610` | 🔧 `header.php` convertido a `wp_nav_menu()` con fallback hardcoded |
+| `31f6610` | 🔧 CSS: estilos `.primary-menu`, responsive actualizado |
+| `31f6610` | 📁 Memory files actualizados |
+| `925d611` | 🚀 **Workflow deploy optimizado**: solo sincroniza theme vía FTP, no todo WordPress |
+| `925d611` | ✅ Verificado: GitHub Action corre con éxito en cada push a `main` |
+| — | ✅ Secrets FTP (`FTP_SERVER`, `FTP_USERNAME`, `FTP_PASSWORD`) ya existían en el repo |
+
+### 🚀 Flujo de deploy ahora:
+```bash
+git add -A && git commit -m "..." && git push origin main
+# → GitHub Actions deployea automáticamente solo el theme al servidor remoto
+```
