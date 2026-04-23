@@ -40,6 +40,21 @@ function nieto_create_pages() {
 			'slug'     => 'blog',
 			'template' => 'template-blog.php',
 		],
+		[
+			'title'    => 'Trabaja con Nosotros',
+			'slug'     => 'trabaja-con-nosotros',
+			'template' => 'template-trabaja-con-nosotros.php',
+		],
+		[
+			'title'    => 'Política de Privacidad',
+			'slug'     => 'politica-de-privacidad',
+			'template' => 'template-politica-de-privacidad.php',
+		],
+		[
+			'title'    => 'Términos y Condiciones',
+			'slug'     => 'terminos-y-condiciones',
+			'template' => 'template-terminos-y-condiciones.php',
+		],
 	];
 
 	foreach ( $pages as $page ) {
@@ -400,6 +415,45 @@ add_action( 'init', function() {
 		update_option( 'nieto_rewrite_flushed', NL_THEME_VERSION );
 	}
 }, 20 );
+
+/* ── Register sidebar ── */
+add_action( 'widgets_init', function() {
+	register_sidebar( [
+		'name'          => __( 'Blog Sidebar', 'nieto-lawyers' ),
+		'id'            => 'blog-sidebar',
+		'description'   => __( 'Widgets for the blog single post sidebar.', 'nieto-lawyers' ),
+		'before_widget' => '<div class="sidebar-widget %s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h3 class="sidebar-widget-title">',
+		'after_title'   => '</h3>',
+	] );
+} );
+
+/* ── AJAX handler for job applications ── */
+add_action( 'wp_ajax_nieto_job_application',        'nieto_handle_job_application' );
+add_action( 'wp_ajax_nopriv_nieto_job_application', 'nieto_handle_job_application' );
+function nieto_handle_job_application() {
+	check_ajax_referer( 'nieto_nonce', 'nonce' );
+
+	$name    = sanitize_text_field( $_POST['name']    ?? '' );
+	$email   = sanitize_email(      $_POST['email']   ?? '' );
+	$phone   = sanitize_text_field( $_POST['phone']   ?? '' );
+	$message = sanitize_textarea_field( $_POST['message'] ?? '' );
+	$area    = sanitize_text_field( $_POST['area']    ?? '' );
+
+	if ( ! $name || ! $email ) {
+		wp_send_json_error( [ 'message' => 'Por favor completa los campos requeridos.' ] );
+	}
+
+	$to      = get_option( 'admin_email' );
+	$subject = "Postulación laboral de $name – Nieto & Nieto Lawyers";
+	$body    = "Nombre: $name\nEmail: $email\nTeléfono: $phone\nÁrea de interés: $area\n\nMensaje:\n$message";
+	$headers = [ 'Content-Type: text/plain; charset=UTF-8', "Reply-To: $name <$email>" ];
+
+	wp_mail( $to, $subject, $body, $headers );
+
+	wp_send_json_success( [ 'message' => '¡Gracias por tu postulación! Te contactaremos pronto si tu perfil se ajusta a nuestras necesidades.' ] );
+}
 
 /* ── Helper: get recent posts ── */
 function nieto_get_recent_posts( $count = 3 ) {

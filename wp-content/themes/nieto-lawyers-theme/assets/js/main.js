@@ -107,6 +107,50 @@
     });
   }
 
+  /* ── Job application form ── */
+  const jobForm = document.querySelector('#nlJobForm');
+  if (jobForm) {
+    jobForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const btn     = jobForm.querySelector('[type=submit]');
+      const resp    = document.querySelector('#nlJobFormResponse');
+      const origTxt = btn.textContent;
+
+      btn.disabled    = true;
+      btn.textContent = 'Enviando…';
+      if (resp) { resp.className = 'form-response'; resp.textContent = ''; }
+
+      $.ajax({
+        url:  NietoAjax.url,
+        type: 'POST',
+        data: {
+          action:  'nieto_job_application',
+          nonce:   NietoAjax.nonce,
+          name:    jobForm.querySelector('[name=name]').value,
+          email:   jobForm.querySelector('[name=email]').value,
+          phone:   jobForm.querySelector('[name=phone]') ? jobForm.querySelector('[name=phone]').value : '',
+          area:    jobForm.querySelector('[name=area]')  ? jobForm.querySelector('[name=area]').value  : '',
+          message: jobForm.querySelector('[name=message]').value,
+        },
+        success: function(r) {
+          if (r.success) {
+            if (resp) { resp.className = 'form-response success'; resp.textContent = r.data.message; }
+            jobForm.reset();
+          } else {
+            if (resp) { resp.className = 'form-response error'; resp.textContent = r.data.message; }
+          }
+        },
+        error: function() {
+          if (resp) { resp.className = 'form-response error'; resp.textContent = 'Error de conexión. Intenta de nuevo.'; }
+        },
+        complete: function() {
+          btn.disabled    = false;
+          btn.textContent = origTxt;
+        }
+      });
+    });
+  }
+
   /* ── Counter animation ── */
   function animateCounter(el) {
     const target = parseInt(el.dataset.target, 10);

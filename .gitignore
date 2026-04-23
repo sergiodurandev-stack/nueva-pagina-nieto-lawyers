@@ -1,5 +1,6 @@
 wp-content/ai1wm-backups/
 wp-content/backups-dup-lite/
+wp-content/uploads/
 update.tar.gz
 local_dump.sql
 wp-config.php
