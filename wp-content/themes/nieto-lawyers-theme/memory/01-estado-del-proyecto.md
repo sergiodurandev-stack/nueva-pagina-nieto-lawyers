@@ -2,7 +2,7 @@
 
 ## Fase 3: Finalización
 
-### Última actualización: 2025-04-23 (deploy completado)
+### Última actualización: 2025-04-? (featured images script + menú WP + overflow fixes)
 
 ---
 
@@ -70,9 +70,9 @@
 ## 🔄 PENDIENTE POST-DEPLOY
 
 ### 🟡 Media Prioridad
-1. **Featured images**: 169 _thumbnail_id en original, 0 en nuevo. Archivos existen en /uploads/ pero faltan registros attachment. Crear script PHP para registrar attachments y mapear _thumbnail_id.
-2. **Overflow móvil**: Verificar si persiste overflow horizontal (<400px). Revisar `.areas-grid` y hero.
-3. **Menú de navegación**: Configurar menú de WP correctamente.
+1. **Featured images**: ✅ Script creado (`register-featured-images.php`). Pendiente de ejecutar en el sitio (local o remoto) para registrar attachments y mapear _thumbnail_id.
+2. **Overflow móvil**: 🔄 Revisado — CSS ya tiene medidas preventivas (overflow-x hidden, max-width 100vw). Pendiente test en dispositivos reales.
+3. **Menú de navegación**: ✅ Header actualizado para usar `wp_nav_menu()` con fallback hardcoded. CSS añadido para `.primary-menu`.
 
 ### 🟢 Baja Prioridad
 4. **SEO**: Meta descriptions para templates

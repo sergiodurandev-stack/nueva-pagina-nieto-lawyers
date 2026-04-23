@@ -62,3 +62,13 @@
 | 🔧 Bug min lectura | Reemplazado get_post_time('H:i') por cálculo word_count/200 en single.php |
 | ✅ Archive URLs | Verificadas todas las URLs de CPTs y categorías (200 OK) |
 | 📁 Memoria actualizada | STATE.md, CHANGELOG.md, TASKS.md actualizados en .memory/ y theme/memory/ |
+
+## Sesión 2025-04-? — Featured images script + Menú WP + Overflow fixes
+
+| Tarea | Detalle |
+|-------|---------|
+| 🆕 Script featured images | Creado `register-featured-images.php` para registrar attachments desde BD original y mapear _thumbnail_id |
+| 🔧 Menú navegación | Header convertido para usar `wp_nav_menu()` con fallback a hardcoded links |
+| 🔧 CSS menú | Añadidos estilos para `.primary-menu` (list items, current-menu-item, etc.) |
+| 🔧 CSS responsive | Actualizado menú móvil para usar nueva estructura `.primary-menu` |
+| 📁 Memoria actualizada | STATE.md, CHANGELOG.md actualizados |

@@ -19,12 +19,28 @@
     </a>
 
     <nav class="primary-nav" id="primaryNav">
-      <a href="<?php echo esc_url(home_url('/')); ?>">Inicio</a>
-      <a href="<?php echo esc_url(home_url('/quienes-somos/')); ?>">Nosotros</a>
-      <a href="<?php echo esc_url(home_url('/areas-de-practica/')); ?>">Áreas de Práctica</a>
-      <a href="<?php echo esc_url(home_url('/nuestro-equipo/')); ?>">Equipo</a>
-      <a href="<?php echo esc_url(home_url('/blog/')); ?>">Blog</a>
-      <a href="<?php echo esc_url(home_url('/#contacto')); ?>">Contacto</a>
+      <?php
+      if ( has_nav_menu('primary') ) {
+        wp_nav_menu([
+          'theme_location' => 'primary',
+          'container'      => false,
+          'menu_class'     => 'primary-menu',
+          'fallback_cb'    => false,
+          'depth'          => 1,
+        ]);
+      } else {
+        ?>
+        <ul class="primary-menu">
+          <li><a href="<?php echo esc_url(home_url('/')); ?>">Inicio</a></li>
+          <li><a href="<?php echo esc_url(home_url('/quienes-somos/')); ?>">Nosotros</a></li>
+          <li><a href="<?php echo esc_url(home_url('/areas-de-practica/')); ?>">Áreas de Práctica</a></li>
+          <li><a href="<?php echo esc_url(home_url('/nuestro-equipo/')); ?>">Equipo</a></li>
+          <li><a href="<?php echo esc_url(home_url('/blog/')); ?>">Blog</a></li>
+          <li><a href="<?php echo esc_url(home_url('/#contacto')); ?>">Contacto</a></li>
+        </ul>
+        <?php
+      }
+      ?>
     </nav>
 
     <div class="header-cta">

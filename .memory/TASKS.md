@@ -3,19 +3,21 @@
 ## 🟡 Media prioridad
 
 ### Featured images (posts migrados sin _thumbnail_id)
-- [ ] 169 _thumbnail_id en original, 0 en nuevo
-- [ ] Archivos físicos existen en /uploads/ (2023-2025)
-- [ ] Solución: Crear script PHP que registre attachments y mapee _thumbnail_id
-- [ ] Alternativa: Usar plugin para regenerar thumbnails
+- [x] Script PHP creado: `register-featured-images.php`
+- [ ] Ejecutar script en el sitio (local o remoto) para registrar attachments y mapear _thumbnail_id
+- [ ] Verificar que las imágenes destacadas aparezcan correctamente
 
 ### Overflow móvil
-- [ ] Verificar si persiste overflow horizontal en móvil (<400px)
-- [ ] Revisar `.areas-grid` con `max-width: 100vw`
-- [ ] Verificar hero en móviles pequeños
+- [x] CSS revisado — html/body ya tienen `overflow-x: hidden; width: 100%`
+- [x] `.areas-grid` ya tiene `max-width: 100vw`
+- [x] Hero ya tiene `overflow: hidden`
+- [ ] Realizar test en dispositivos reales para verificar
 
 ### Menú de navegación
-- [ ] Verificar que el menú de WP esté configurado correctamente
-- [ ] Asignar ubicación de menú (primary, footer)
+- [x] Header actualizado para usar `wp_nav_menu()` con fallback hardcoded
+- [x] CSS añadido para `.primary-menu` (li, a, current-menu-item states)
+- [x] CSS responsive actualizado para nueva estructura de menú
+- [ ] Asignar ubicación de menú (primary) desde el admin de WP
 
 ## 🟢 Baja prioridad
 
