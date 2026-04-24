@@ -59,18 +59,6 @@ jobs:
           UPLOAD_DIR: ${{ steps.prep.outputs.upload_dir }}
         run: |
           sudo apt-get install -y lftp -q
-
-          cat > /tmp/lftp_script.txt << LFTP
-          set ftp:ssl-allow yes
-          set ftp:ssl-force yes
-          set ssl:verify-certificate no
-          set net:max-retries 5
-          set net:reconnect-interval-base 10
-          set mirror:parallel-transfer-count 5
-          mirror --reverse --verbose "$UPLOAD_DIR/" "/arasaka.sergioduran.dev/nuevo-nieto-lawyers1/wp-content/uploads/$YEAR/"
-          quit
-          LFTP
-
           echo "Iniciando subida de $YEAR al servidor..."
-          lftp -u "$FTP_USER:$FTP_PASS" "$FTP_SERVER" -f /tmp/lftp_script.txt
+          lftp -u "$FTP_USER,$FTP_PASS" "$FTP_SERVER" -e "set ftp:ssl-allow yes; set ssl:verify-certificate no; set net:max-retries 5; mirror --reverse --parallel=5 $UPLOAD_DIR/ /arasaka.sergioduran.dev/nuevo-nieto-lawyers1/wp-content/uploads/$YEAR/; quit"
           echo "✅ Subida de $YEAR completada"
