@@ -1,0 +1,76 @@
+name: 📦 Subir imágenes históricas (una sola vez)
+
+on:
+  workflow_dispatch:
+    inputs:
+      year:
+        description: 'Carpeta de año a subir'
+        required: true
+        type: choice
+        options:
+          - '2023'
+          - '2024'
+          - '2025'
+      zip_url:
+        description: 'URL directa del ZIP (desde GitHub Release Assets)'
+        required: true
+
+jobs:
+  upload-images:
+    name: Subir ${{ github.event.inputs.year }} al servidor
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Descargar ZIP
+        run: |
+          echo "Descargando ZIP para el año ${{ github.event.inputs.year }}..."
+          curl -L \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            "${{ github.event.inputs.zip_url }}" \
+            -o uploads.zip
+          echo "Tamaño descargado: $(du -sh uploads.zip | cut -f1)"
+
+      - name: 📦 Descomprimir
+        run: |
+          mkdir -p extracted
+          unzip -q uploads.zip -d extracted/
+          echo "Archivos extraídos: $(find extracted/ -type f | wc -l)"
+          ls extracted/
+
+      - name: 🔧 Preparar directorio fuente
+        id: prep
+        run: |
+          YEAR="${{ github.event.inputs.year }}"
+          # Si el ZIP contiene la carpeta del año como primer nivel, la usamos
+          if [ -d "extracted/$YEAR" ]; then
+            echo "upload_dir=extracted/$YEAR" >> $GITHUB_OUTPUT
+            echo "Estructura detectada: extracted/$YEAR/"
+          else
+            echo "upload_dir=extracted" >> $GITHUB_OUTPUT
+            echo "Estructura detectada: extracted/ (contenido directo)"
+          fi
+
+      - name: 📤 Subir al servidor via FTP (lftp)
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_USER: ${{ secrets.FTP_USERNAME }}
+          FTP_PASS: ${{ secrets.FTP_PASSWORD }}
+          YEAR: ${{ github.event.inputs.year }}
+          UPLOAD_DIR: ${{ steps.prep.outputs.upload_dir }}
+        run: |
+          sudo apt-get install -y lftp -q
+
+          cat > /tmp/lftp_script.txt << LFTP
+          set ftp:ssl-allow yes
+          set ftp:ssl-force yes
+          set ssl:verify-certificate no
+          set net:max-retries 5
+          set net:reconnect-interval-base 10
+          set mirror:parallel-transfer-count 5
+          mirror --reverse --verbose "$UPLOAD_DIR/" "/arasaka.sergioduran.dev/nuevo-nieto-lawyers1/wp-content/uploads/$YEAR/"
+          quit
+          LFTP
+
+          echo "Iniciando subida de $YEAR al servidor..."
+          lftp -u "$FTP_USER:$FTP_PASS" "$FTP_SERVER" -f /tmp/lftp_script.txt
+          echo "✅ Subida de $YEAR completada"

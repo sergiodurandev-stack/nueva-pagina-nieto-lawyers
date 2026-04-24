@@ -5,6 +5,8 @@ on:
     branches: [ main ]
     paths:
       - 'wp-content/themes/nieto-lawyers-theme/**'
+      - 'wp-content/uploads/nieto-assets/**'
+      - 'wp-content/uploads/fonts/**'
       - '.github/workflows/deploy.yml'
 
 jobs:
@@ -27,3 +29,21 @@ jobs:
             **/.git*
             .gitignore
             memory/
+
+      - name: 📤 SFTP — Sincronizar nieto-assets
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./wp-content/uploads/nieto-assets/
+          server-dir: /arasaka.sergioduran.dev/nuevo-nieto-lawyers1/wp-content/uploads/nieto-assets/
+
+      - name: 📤 SFTP — Sincronizar fonts
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./wp-content/uploads/fonts/
+          server-dir: /arasaka.sergioduran.dev/nuevo-nieto-lawyers1/wp-content/uploads/fonts/

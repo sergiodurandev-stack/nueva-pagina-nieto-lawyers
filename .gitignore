@@ -1,6 +1,8 @@
 wp-content/ai1wm-backups/
 wp-content/backups-dup-lite/
-wp-content/uploads/
+wp-content/uploads/*
+!wp-content/uploads/nieto-assets/
+!wp-content/uploads/fonts/
 *.zip
 *.tar.gz
 local_dump.sql
