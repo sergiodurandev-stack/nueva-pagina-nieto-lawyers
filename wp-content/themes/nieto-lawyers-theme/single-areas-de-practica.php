@@ -54,7 +54,7 @@ $areas = [
   'impuestos-aduanero-y-comercio-exterior' => [
     'name'   => 'Impuestos, Aduanero y Comercio Exterior',
     'icon'   => 'fa-landmark',
-    'img'    => $assets . '/impuestos.png',
+    'img'    => $assets . '/impuestos.jpg',
     'intro'  => '<p>Nuestra práctica tributaria ofrece asesoría integral en planeación fiscal, cumplimiento de obligaciones tributarias y defensa ante la DIAN. Combinamos el conocimiento profundo de la normativa colombiana con una visión estratégica que permite a nuestros clientes optimizar su carga impositiva dentro del marco legal.</p><p>En materia aduanera y de comercio exterior, acompañamos a importadores y exportadores en todos los aspectos de sus operaciones internacionales.</p>',
     'services' => [
       ['titulo' => 'Planeación Fiscal', 'desc' => 'Desarrollamos estrategias fiscales que permitan a nuestros clientes minimizar la carga tributaria y maximizar su eficiencia fiscal, tanto en operaciones nacionales como internacionales.'],
@@ -97,7 +97,7 @@ $areas = [
   'competencia-y-proteccion-al-consumidor' => [
     'name'   => 'Competencia y Protección al Consumidor',
     'icon'   => 'fa-balance-scale',
-    'img'    => $assets . '/Competencia.png',
+    'img'    => $assets . '/competencia.jpg',
     'intro'  => '<p>Nuestra práctica en Competencia y Protección al Consumidor ofrece asesoría jurídica especializada tanto a empresas que enfrentan investigaciones por prácticas anticompetitivas como a consumidores que buscan proteger sus derechos.</p><p>Contamos con amplio conocimiento de la normativa de libre competencia en Colombia y del estatuto del consumidor, lo que nos permite brindar una defensa efectiva ante la SIC y demás autoridades competentes.</p>',
     'services' => [
       ['titulo' => 'Asesoría a Consumidores y Empresas', 'desc' => 'Acompañamos integralmente a los consumidores sobre sus derechos y obligaciones en relación con los bienes y servicios que adquieren, así como a las empresas en el cumplimiento de la normativa de protección al consumidor.'],
@@ -211,6 +211,16 @@ $areas = [
   ],
 ];
 
+$lawyer_imgs = [
+  'jaime-nieto'           => 'Jaime-Nieto.png',
+  'jaime-andres-nieto'    => 'Jaime-Andres-Nieto.png',
+  'katty-escobar-gomez'   => 'Kathy-Escobar.png',
+  'estefani-nieto'        => 'Estefani-Nieto.png',
+  'doris-cecilia-criado'  => 'Doris-Cecilia-Criado.png',
+  'anibal-ricardo-coley'  => 'Anibal-Coley-1-1.png',
+  'mert-ocal'             => 'Mert-Ocal.png',
+];
+
 $area = $areas[ $slug ] ?? null;
 
 if ( ! $area ) {
@@ -222,8 +232,9 @@ get_header();
 ?>
 
 <!-- ════ BANNER ════ -->
-<div class="page-banner">
+<div class="page-banner area-banner">
   <div class="page-banner-bg" style="background-image:url('<?php echo esc_url( $area['img'] ); ?>')"></div>
+  <div class="area-banner-overlay"></div>
   <div class="container page-banner-content">
     <div class="page-banner-breadcrumb">
       <a href="<?php echo esc_url( home_url( '/' ) ); ?>">Inicio</a>
@@ -232,8 +243,11 @@ get_header();
       <i class="fa-solid fa-chevron-right"></i>
       <span><?php echo esc_html( $area['name'] ); ?></span>
     </div>
-    <div class="area-banner-icon"><i class="fa-solid <?php echo esc_attr( $area['icon'] ); ?>"></i></div>
+    <div class="area-banner-icon-wrap">
+      <i class="fa-solid <?php echo esc_attr( $area['icon'] ); ?>"></i>
+    </div>
     <h1 class="page-banner-title"><?php echo esc_html( $area['name'] ); ?></h1>
+    <p class="area-banner-sub">Asesoría especializada · Nieto &amp; Nieto Lawyers</p>
   </div>
 </div>
 
@@ -241,18 +255,29 @@ get_header();
 <section class="area-single-intro">
   <div class="container">
     <div class="area-single-intro-grid reveal">
-      <div>
+      <div class="area-single-text">
         <span class="section-label">Área de Práctica</span>
         <h2 class="section-title" style="margin-bottom:28px">Nuestra <span>Especialización</span></h2>
         <div class="area-single-body">
           <?php echo wp_kses_post( $area['intro'] ); ?>
         </div>
-        <a href="<?php echo esc_url( home_url( '/#contacto' ) ); ?>" class="btn btn-primary" style="margin-top:32px">
-          <i class="fa-solid fa-calendar-check"></i> Consulta Gratuita
-        </a>
+        <div class="area-intro-actions">
+          <a href="<?php echo esc_url( home_url( '/#contacto' ) ); ?>" class="btn btn-primary">
+            <i class="fa-solid fa-calendar-check"></i> Consulta Gratuita
+          </a>
+          <a href="<?php echo esc_url( home_url( '/areas-de-practica/' ) ); ?>" class="btn btn-outline">
+            <i class="fa-solid fa-th-large"></i> Todas las Áreas
+          </a>
+        </div>
       </div>
       <div class="area-single-img-wrap">
-        <img src="<?php echo esc_url( $area['img'] ); ?>" alt="<?php echo esc_attr( $area['name'] ); ?>" loading="lazy">
+        <div class="area-single-img-inner">
+          <img src="<?php echo esc_url( $area['img'] ); ?>" alt="<?php echo esc_attr( $area['name'] ); ?>" loading="lazy">
+        </div>
+        <div class="area-single-img-badge">
+          <i class="fa-solid <?php echo esc_attr( $area['icon'] ); ?>"></i>
+          <span><?php echo esc_html( $area['name'] ); ?></span>
+        </div>
       </div>
     </div>
   </div>
@@ -286,9 +311,17 @@ get_header();
       <h2 class="section-title">Abogados <span>en esta área</span></h2>
     </div>
     <div class="area-lawyers-grid reveal">
-      <?php foreach ( $area['lawyers'] as $lslug => $lname ) : ?>
+      <?php foreach ( $area['lawyers'] as $lslug => $lname ) :
+        $limg = isset( $lawyer_imgs[ $lslug ] ) ? $assets . '/' . $lawyer_imgs[ $lslug ] : '';
+      ?>
         <a href="<?php echo esc_url( home_url( '/abogados/' . $lslug . '/' ) ); ?>" class="area-lawyer-card">
-          <div class="area-lawyer-icon"><i class="fa-solid fa-user-tie"></i></div>
+          <div class="area-lawyer-photo">
+            <?php if ( $limg ) : ?>
+              <img src="<?php echo esc_url( $limg ); ?>" alt="<?php echo esc_attr( $lname ); ?>" loading="lazy">
+            <?php else : ?>
+              <i class="fa-solid fa-user-tie"></i>
+            <?php endif; ?>
+          </div>
           <span class="area-lawyer-name"><?php echo esc_html( $lname ); ?></span>
           <span class="area-lawyer-link">Ver perfil <i class="fa-solid fa-arrow-right"></i></span>
         </a>
