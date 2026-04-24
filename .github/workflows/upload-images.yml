@@ -33,7 +33,7 @@ jobs:
       - name: 📦 Descomprimir
         run: |
           mkdir -p extracted
-          unzip -q uploads.zip -d extracted/
+          7z x uploads.zip -o./extracted/ -y
           echo "Archivos extraídos: $(find extracted/ -type f | wc -l)"
           ls extracted/
 
