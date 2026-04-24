@@ -1,56 +1,53 @@
-name: 📦 Subir imágenes históricas (una sola vez)
+name: "Subir imagenes historicas (una sola vez)"
 
 on:
   workflow_dispatch:
     inputs:
       year:
-        description: 'Carpeta de año a subir'
+        description: "Carpeta de ano a subir"
         required: true
         type: choice
         options:
-          - '2023'
-          - '2024'
-          - '2025'
+          - "2023"
+          - "2024"
+          - "2025"
       zip_url:
-        description: 'URL directa del ZIP (desde GitHub Release Assets)'
+        description: "URL directa del ZIP (desde GitHub Release Assets)"
         required: true
 
 jobs:
   upload-images:
-    name: Subir ${{ github.event.inputs.year }} al servidor
+    name: "Subir ${{ github.event.inputs.year }} al servidor"
     runs-on: ubuntu-latest
 
     steps:
-      - name: 📥 Descargar ZIP
+      - name: "Descargar ZIP"
         run: |
-          echo "Descargando ZIP para el año ${{ github.event.inputs.year }}..."
+          echo "Descargando ZIP para el ano ${{ github.event.inputs.year }}..."
           curl -L \
             -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
             "${{ github.event.inputs.zip_url }}" \
             -o uploads.zip
-          echo "Tamaño descargado: $(du -sh uploads.zip | cut -f1)"
+          echo "Tamano descargado: $(du -sh uploads.zip | cut -f1)"
 
-      - name: 📦 Descomprimir
+      - name: "Descomprimir (corrige rutas Windows)"
         run: |
           mkdir -p extracted
-          7z x uploads.zip -o./extracted/ -y
-          echo "Archivos extraídos: $(find extracted/ -type f | wc -l)"
+          python3 -c "import zipfile,os; z=zipfile.ZipFile('uploads.zip','r'); [setattr(m,'filename',m.filename.replace(chr(92),'/')) or z.extract(m,'extracted/') for m in z.infolist()]; z.close(); print('Extraccion completa')"
+          echo "Archivos extraidos: $(find extracted/ -type f | wc -l)"
           ls extracted/
 
-      - name: 🔧 Preparar directorio fuente
+      - name: "Preparar directorio fuente"
         id: prep
         run: |
           YEAR="${{ github.event.inputs.year }}"
-          # Si el ZIP contiene la carpeta del año como primer nivel, la usamos
           if [ -d "extracted/$YEAR" ]; then
             echo "upload_dir=extracted/$YEAR" >> $GITHUB_OUTPUT
-            echo "Estructura detectada: extracted/$YEAR/"
           else
             echo "upload_dir=extracted" >> $GITHUB_OUTPUT
-            echo "Estructura detectada: extracted/ (contenido directo)"
           fi
 
-      - name: 📤 Subir al servidor via FTP (lftp)
+      - name: "Subir al servidor via FTP (lftp)"
         env:
           FTP_SERVER: ${{ secrets.FTP_SERVER }}
           FTP_USER: ${{ secrets.FTP_USERNAME }}
@@ -61,4 +58,4 @@ jobs:
           sudo apt-get install -y lftp -q
           echo "Iniciando subida de $YEAR al servidor..."
           lftp -u "$FTP_USER,$FTP_PASS" "$FTP_SERVER" -e "set ftp:ssl-allow yes; set ssl:verify-certificate no; set net:max-retries 5; mirror --reverse --parallel=5 $UPLOAD_DIR/ /arasaka.sergioduran.dev/nuevo-nieto-lawyers1/wp-content/uploads/$YEAR/; quit"
-          echo "✅ Subida de $YEAR completada"
+          echo "Subida de $YEAR completada"
