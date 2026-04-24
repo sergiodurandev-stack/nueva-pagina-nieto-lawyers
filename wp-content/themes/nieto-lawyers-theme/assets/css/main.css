@@ -158,19 +158,40 @@ h1,h2,h3,h4,h5,h6 {
   top: 0; left: 0; right: 0;
   z-index: 1000;
   padding: 0 24px;
-  transition: background .4s, box-shadow .4s, padding .3s;
-}
-
-.site-header.scrolled {
   background: rgba(26,26,28,.97);
   box-shadow: 0 2px 20px rgba(0,0,0,.5);
   backdrop-filter: blur(10px);
+  transition: background .4s, box-shadow .4s, padding .3s;
+}
+
+/* Home page: starts transparent, becomes solid on scroll */
+body.home .site-header {
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+body.home .site-header.scrolled {
+  background: rgba(26,26,28,.97);
+  box-shadow: 0 2px 20px rgba(0,0,0,.5);
+  backdrop-filter: blur(10px);
+}
+
+/* Account for WordPress admin bar */
+body.admin-bar .site-header {
+  top: 32px;
+}
+@media screen and (max-width: 782px) {
+  body.admin-bar .site-header {
+    top: 46px;
+  }
 }
 
 .header-inner {
   max-width: var(--max-w);
   margin: auto;
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
   height: 80px;
