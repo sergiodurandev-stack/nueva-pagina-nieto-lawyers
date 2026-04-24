@@ -1,6 +1,6 @@
 # 🧠 Estado del Proyecto — Nieto & Nieto Lawyers (Fase 3 en progreso)
 
-**Última actualización:** 2025-04-? (deploy automatizado con GitHub Actions funcionando)
+**Última actualización:** 2025-04-? (featured images ejecutado localmente ✅)
 
 ---
 
@@ -97,7 +97,10 @@ Header/Nav, Hero, About, Practice Areas, Team, Reviews, Latest Posts, Contact, F
 ## 📋 PENDIENTES POST-DEPLOY
 
 ### 🟡 Media Prioridad
-1. **Featured images**: ✅ Script creado (`register-featured-images.php`). Pendiente de ejecutar en el sitio local o remoto para registrar attachments y mapear _thumbnail_id.
+1. **Featured images**: ✅ **Ejecutado LOCALMENTE** — 80 posts con thumbnail asignados.
+   - Script original (`register-featured-images.php`) eliminado por seguridad.
+   - Creado `register-featured-images-remote.php` para ejecutar en remoto.
+   - ⚠️ **Requiere**: Subir uploads (2023-2026) al servidor remoto via cPanel/FTP.
 2. **Overflow móvil**: 🔄 Revisado — CSS ya tiene `overflow-x: hidden` en html/body, `.areas-grid` con `max-width: 100vw`. Se monitoreará en próximos tests.
 3. **Menú de navegación**: ✅ Header actualizado para usar `wp_nav_menu()` con fallback hardcoded. Estilos CSS añadidos para `.primary-menu`.
 

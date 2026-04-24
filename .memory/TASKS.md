@@ -4,12 +4,17 @@
 
 ### Featured images (posts migrados sin _thumbnail_id)
 - [x] Script PHP creado: `register-featured-images.php`
-- [ ] **Ejecutar script** en el sitio remoto vía web:
-  ```
-  https://arasaka.sergioduran.dev/nuevo-nieto-lawyers1/wp-content/themes/nieto-lawyers-theme/register-featured-images.php?key=NL_MIGRA_THUMBS_2025
-  ```
-- [ ] Eliminar el script después de ejecutarlo (por seguridad)
-- [ ] Verificar que las imágenes destacadas aparezcan correctamente
+- [x] **Ejecutado LOCALMENTE** — 80 posts actualizados con featured images
+- [x] Script original eliminado (seguridad)
+- [x] Nuevo script remoto creado: `register-featured-images-remote.php`
+- [ ] **PENDIENTE REMOTO**:
+  1. Subir las carpetas `wp-content/uploads/2023/`, `2024/`, `2025/`, `2026/` al servidor remoto (solo existe `nieto-assets/`)
+  2. Ejecutar remote script:
+     ```
+     https://arasaka.sergioduran.dev/nuevo-nieto-lawyers1/wp-content/themes/nieto-lawyers-theme/register-featured-images-remote.php?key=NL_MIGRA_THUMBS_REMOTE_2025
+     ```
+  3. Eliminar el script remoto después
+- [ ] Verificar que las imágenes destacadas aparezcan correctamente en remoto
 
 ### Menú de navegación
 - [x] Header actualizado para usar `wp_nav_menu()` con fallback hardcoded

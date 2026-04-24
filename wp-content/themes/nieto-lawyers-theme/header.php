@@ -3,6 +3,29 @@
 <head>
 <meta charset="<?php bloginfo('charset'); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<?php
+/**
+ * Dynamic meta description for SEO.
+ */
+$meta_desc = '';
+if ( is_singular() ) {
+    $meta_desc = get_the_excerpt();
+}
+if ( is_category() || is_tax() ) {
+    $meta_desc = strip_tags( term_description() );
+}
+if ( is_archive() && ! is_category() && ! is_tax() ) {
+    $meta_desc = get_the_archive_title() . ' — ' . get_bloginfo('description');
+}
+if ( is_front_page() || is_home() ) {
+    $meta_desc = get_bloginfo('description');
+}
+if ( $meta_desc ) {
+    // Truncate to ~160 chars
+    $meta_desc = substr( wp_strip_all_tags( $meta_desc ), 0, 160 );
+    echo '<meta name="description" content="' . esc_attr( $meta_desc ) . '">' . "\n";
+}
+?>
 <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>

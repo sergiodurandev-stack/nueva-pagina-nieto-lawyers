@@ -1,6 +1,6 @@
 # Historial de Cambios — Nieto & Nieto Lawyers
 
-## Sesión 2025-04-? — Featured images script + Menú WP + Overflow fixes
+## Sesión 2025-04-? — Featured images ejecutado localmente + Script remoto
 
 | Tarea | Detalle |
 |-------|---------|
@@ -9,6 +9,16 @@
 | 🔧 CSS menú | Añadidos estilos para `.primary-menu` (list items, current-menu-item, etc.) |
 | 🔧 CSS responsive | Actualizado menú móvil para usar nueva estructura `.primary-menu` |
 | 📁 Memoria actualizada | STATE.md, CHANGELOG.md, TASKS.md actualizados |
+
+## Sesión 2025-04-? — Featured images ejecutado localmente
+
+| Tarea | Detalle |
+|-------|---------|
+| 🚀 Ejecutado script | `register-featured-images.php` ejecutado localmente (nieto-lawyers-1.local) |
+| ✅ Resultado | 80 posts actualizados con featured images |
+| 🗑️ Script eliminado | `register-featured-images.php` borrado por seguridad |
+| 🆕 Script remoto | Creado `register-featured-images-remote.php` con datos embebidos para usar en remoto |
+| 📁 Memoria actualizada | Archivos de estado y tareas actualizados |
 
 ## 2025-04-23 — Sesión de Deploy y Corrección BD Remota
 

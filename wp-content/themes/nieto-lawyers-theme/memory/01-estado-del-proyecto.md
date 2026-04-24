@@ -2,7 +2,7 @@
 
 ## Fase 3: Finalización
 
-### Última actualización: 2025-04-? (featured images script + menú WP + overflow fixes)
+### Última actualización: 2025-04-? (featured images ejecutado localmente ✅)
 
 ---
 
@@ -70,7 +70,10 @@
 ## 🔄 PENDIENTE POST-DEPLOY
 
 ### 🟡 Media Prioridad
-1. **Featured images**: ✅ Script creado (`register-featured-images.php`). Pendiente de ejecutar en el sitio (local o remoto) para registrar attachments y mapear _thumbnail_id.
+1. **Featured images**: ✅ **Ejecutado LOCALMENTE** — 80 posts actualizados.
+   - Script original (`register-featured-images.php`) eliminado por seguridad.
+   - Creado `register-featured-images-remote.php` para ejecutar en remoto.
+   - ⚠️ Requiere subir uploads (2023-2026) al remoto via cPanel/FTP.
 2. **Overflow móvil**: 🔄 Revisado — CSS ya tiene medidas preventivas (overflow-x hidden, max-width 100vw). Pendiente test en dispositivos reales.
 3. **Menú de navegación**: ✅ Header actualizado para usar `wp_nav_menu()` con fallback hardcoded. CSS añadido para `.primary-menu`.
 
